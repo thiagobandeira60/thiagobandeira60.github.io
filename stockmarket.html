@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Stock-Market-Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">My Portfolio</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/thiago-freitas60" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/thiagobandeira60" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Stock Market Analysis<br /></h1>
+									<p>This is a Data Analysis Project that consists in looking at Stock Market data and performing some analysis through visualization techniques in Python.<br />
+								</header>
+								<center><img src="images/stockmarket/stock2.jpg" style="width: 60%; height: 60%" alt="" /></center>
+								<p>This analysis consists of looking at data from the stock market. This project will focus on answering the following questions:</p>
+								<p style="font-size:17px">1. What is the change in price of the stock over time?</p>
+								<p style="font-size:17px">2. What is the daily return of the stock on average?</p>
+								<p style="font-size:17px">3. What is the moving average of the various stocks?</p>
+								<p style="font-size:17px">4. What is the correlation between different stocks' closing prices?</p>
+								<p style="font-size:17px">5. What is the correlation between different stocks' daily returns?</p>
+								<p style="font-size:17px">6. How much value is at risk if we invest in a particular stock?</p>
+								<p style="font-size:17px">7. How can we attempt to predict future stock behavior?</p>
+								<p>We are goint to use pandas to analyse the basic attributes of a stock. In this project we will work with the biggest Technology companies and use Yahoo to grab data from them.</p>
+								<center><img src="images/stockmarket/eda1.PNG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>Then, we can use the describe() and info() methods to have a glimpse of the data:</p>
+								<center><img src="images/stockmarket/eda2.PNG" style="width: 50%; height: 50%" alt="" /></center>
+								<center><img src="images/stockmarket/eda3.PNG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>We can take a look at the total volume of stock being traded each day for the past 5 years:</p>
+								<center><img src="images/stockmarket/eda4.PNG" style="width: 100%; height: 100%" alt="" /></center>
+								<p>Now that we visualized the total volume of stock, we can calculate the moving average. We will calculate 3 different moving averages: for 10 dyas, 20 days, and 50 days. The moving average is when we create a series of averages from different subsets of the complete dataset in order to analyze the data points. The reason why moving averages are important, especially for traders and analysts, is that the fundamental assumption of technical analysis holds that past performance can inform future movements. With the moving average, we can determine past price trends.</p>
+								<center><img src="images/stockmarket/movingaverage.PNG" style="width: 100%; height: 100%" alt="" /></center>
+								<p>If we get a moving average for more days at a time, we get a smoother line, and it's not gonna rely much on the daily.</p>
+								<p>The following graph shows the daily returns for Apple. What that means is: for any given day, what is your percent return on your money?</p>
+								<center><img src="images/stockmarket/applereturns.PNG" style="width: 100%; height: 100%" alt="" /></center>
+								<p>If we want to have a look at the overall daily return of Apple, by using a histogram, we will have the following picture:</p>
+								<center><img src="images/stockmarket/applereturnspastyear.PNG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>We can also compare the daily returns of Google and Microsoft:</p>
+								<center><img src="images/stockmarket/relation1.PNG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>As we can see, both seem to be positively correlated. The following picture gives us an intuitive sense to understand correlation based on the pearson's coefficient:</p>
+								<center><img src="images/stockmarket/interpret.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<p>Now, what if we wanted to see the correlation between any possible combination of variables (stock companies)? We could use a pairplot() to see it:</p>
+								<center><img src="images/stockmarket/relation2.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<p>The above visualizations show a an interesting correlation between Google and Amazon daily returns</p>
+								<p>Now we will finally calculate the value at risk by using the Monte Carlo method. Before that, however, I believe it is relevant to briefly discuss about how the Monte Carlo method works.</p>
+								<p>Using the Monte Carlo to run many trials with random market conditions, then we'll calculate portfolio losses for each trial. After this, we'll use the aggregation of all these simulations to establish how risky the stock is.</p>
+								<p>Let's start with a brief explanation of what we're going to do:</p>
+								<p>We will use the geometric Brownian motion (GBM), which is technically known as a Markov process. This means that the stock price follows a random walk and is consistent with (at the very least) the weak form of the efficient market hypothesis (EMH): past price information is already incorporated and the next price movement is "conditionally independent" of past price movements.</p>
+								<p>This means that the past information on the price of a stock is independent of where the stock price will be in the future, basically meaning, you can't perfectly predict the future solely based on the previous price of a stock.</p>
+								<p>The equation for geometric Browninan motion is given by the following equation:</p>
+								<center><img src="images/stockmarket/formula1.PNG" style="width: 20%; height: 20%" alt="" /></center>
+								<p>Where S is the stock price, mu is the expected return (which we calculated earlier),sigma is the standard deviation of the returns, t is time, and epsilon is the random variable.</p>
+								<p>We can mulitply both sides by the stock price (S) to rearrange the formula and solve for the stock price.</p>
+								<center><img src="images/stockmarket/formula2.PNG" style="width: 25%; height: 25%" alt="" /></center>
+								<p>Now we see that the change in the stock price is the current stock price multiplied by two terms. The first term is known as "drift", which is the average daily return multiplied by the change of time. The second term is known as "shock", for each tiem period the stock will "drift" and then experience a "shock" which will randomly push the stock price up or down. By simulating this series of steps of drift and shock thousands of times, we can begin to do a simulation of where we might expect the stock price to be.</p>
+								<p>To demonstrate a basic Monte Carlo method, we will start with just a few simulations. First we'll define the variables we'll be using the Google DataFrame GOOG</p>
+								<center><img src="images/stockmarket/montecarlofunction.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<p>Let's check the first 5 rows:</p>
+								<center><img src="images/stockmarket/monte3.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<center><img src="images/stockmarket/montecarlo1.PNG" style="width: 100%; height: 100%" alt="" /></center>
+								<p>Now that we have our array of simulations, we can go ahead and plot a histogram ,as well as use qunatile to define our risk for this stock.</p>
+								<center><img src="images/stockmarket/finalprice.PNG" style="width: 100%; height: 100%" alt="" /></center>
+								<p>Now we have looked at the 1% empirical quantile of the final price distribution to estimate the Value at Risk for the Google stock, which looks to be $18.38 for every investment of 569.85 (the price of one inital google stock).</p>
+								<p>This basically means that for every initial stock you purchase you're putting about $18.38 at risk 99% of the time from our Monte Carlo Simulation.</p>
+								<p>Note: The python code is also provided below. It is optimized to be read using Atom's hydrogen package, where you can run each cell of codes separately and inline (similarly to ipython notebooks).</p>
+							</section>
+							<ul class="actions special">
+								<li><a href="https://github.com/thiagobandeira60/Stock_Market_Analysis/blob/master/StockMarketAnalysis.ipynb " class="button large">Check the Code</a></li>
+								<li><a href="https://github.com/thiagobandeira60/Stock_Market_Analysis/blob/master/StockMarketAnalysis.py" class="button large">Python Code</a></li>
+							</ul>
+					</div>
+
+				<!-- Footer -->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

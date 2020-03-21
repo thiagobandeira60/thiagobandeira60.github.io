@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Database-Project-SQL</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">My Portfolio</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/thiago-freitas60" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/thiagobandeira60" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>SQL Database Project<br /></h1>
+									<p>This is a ficticious database created to simulate a real stadium located in Brazil. The Project is done in SQL and it contains charts of the conceptual and logical database designs, as well as the metadata file.<br />
+								</header>
+								<center><img src="images/sql/sql2.jpg" style="width: 60%; height: 60%" alt="" /></center>
+								<p>Some of the project features can be described below:</p>
+								<ul type="disc">
+									<li>Business Requirements</li>
+									<li>Over 20 tables containing atributes and data inserted</li>
+									<li>The relationship and cardinalities for each table was observed</li>
+									<li>The project contains the conceptual, logical, and physical data models</li>
+									<li>Views and stored procedures included</li>
+									<li>Many code examples to retrieve specific information</li>
+									<li>Metadata to describe the content in each table</li>
+									<li>Entity Relationship Diagram</li>
+									<li>Logical Database Diagram design</li>
+								</ul>
+								<p style="font-weight: bold;">Business Requirements</p>
+								<p>The company was approached by Maracana Stadium, located in Rio De Janeiro, Brazil, to create a database for the following (see goal section). Brazil hosted the Summer Olympic 2016, since the Olympic they wanted to get a sense of their customer types and which program had the most turn out.</p>
+								<p>Goal:</p>
+								<ul type="disc">
+									<li>Increase profits through ticket sales and food sales</li>
+									<li>Maracana stadium came to us to provide a better experience for fans and organizers</li>
+									<li>To improve the organization of structures of parking and ticket sales</li>
+									<li>Organize sales, employees, and customer dates</li>
+								</ul>
+								<p>Products/Services:</p>
+								<ul type="disc">
+									<li>Games</li>
+									<li>Food</li>
+									<li>Tickets</li>
+									<li>Sponsors</li>
+									<li>Concerts</li>
+									<li>Exhibitions</li>
+									<li>Loyalty</li>
+									<li>PLatforms</li>
+								</ul>
+								<p>User Requirements:</p>
+								<p>Maracana Stadium (the stadium) wants to know how many employees are needed for these programs. The employees have these types of attributes; primary key employee Id, department, employee name, phone number, employee email, address(street, state, city, zip) and age. For one employee they could There are 3 types of programs; game, concert, and exhibitions. Maracana Stadium can only have one program at a time. The attribute for games is; name, date, program number, game day, tournament names. The following attribute for concerts is; name, date, program number, and concert types. Attribute for exhibitions is; name, date, program number, and themes. The programs are sponsored by one or many sponsors and sponsor can sponsor none or many. For each donation the primary key is sponsor id, the following are attribute sponsor name and donation amount.</p>
+								<p>Maracana Stadium has seen two type of customers, a customer can be either a member or a special guest. A customer’s primary key is booking ID. A member’s primary key is member ID and unique attribute membership level. A special guest has a unique attribute of guest type. Both member and special guest have the following attribute are; name, phone, address (street, state, city, zip), email, and age. The customer can go to the counter for an program ticket or concession counter but not at the same counters time. Both the program ticket counter and concession counter the same following attributes; counter number, ticket number (primary key), ticket type, ticket price. The unique attribute for program ticket is; ticket sold and tcounter number. At the concessions counter, there are two type of concessions available food or beverages, but can’t happen at the same time. both have the following attributes sales and ccounter number. The unique attribute for food is food type and fvendor, for beverages it is beverage types and brand. For each program there can be one or many counters, however, every counter there can only be one per program.</p>
+								<p>There are 3 type of stands in the stadium; regular, VIP, and box seat, a customer can only go one stand based on the price of their ticket. For each counter, there can only be one of the stands and there can only be All three type of stands has the following attribute stand name, and stand number (primary key). Regular stands have the following unique attribute Rseat number, Rrow number, and zone. VIP stand have the following unique attribute Vseat number and Vrow number. Box Seat has unique attribute of box number.</p>
+								<p>The stadium has built a large parking lot to sustain 80,000 people coming to these programs. Parking area belongs to one stand and one stand belongs to one parking area. Parking has the following attribute; ticket number (primary key), stall number, gate number and level number. There are could be one gate to multiple parking lots. The following is the gate attributes gate number (primary key) and location.</p>
+								<p style="font-weight: bold;">Conceptual Design (ER Diagrams)</p>
+								<center><img src="images/sql/erdiagram.JPG" style="width: 100%; height: 100%" alt="" /></center>
+								<p style="font-weight: bold;">Logical Design</p>
+								<center><img src="images/sql/logical.JPG" style="width: 100%; height: 100%" alt="" /></center>
+								<p>The conceptual and Logical charts can be downloaded in pdf and visualized with a better image quality in the following links:</p>
+								<ul class="actions special">
+									<li><a href="https://github.com/thiagobandeira60/SQL_Project_Maranaca/blob/master/ER_Diagram.pdf" class="button large">Conceptual Design</a></li>
+									<li><a href="https://github.com/thiagobandeira60/SQL_Project_Maranaca/blob/master/Logical_DataBase.pdf" class="button large">Logical Design</a></li>
+								</ul>
+								<p>Please refer to the links below to have access to the code file as well as the metadata file accompanying the code.</p>
+							</section>
+							<ul class="actions special">
+								<li><a href="https://github.com/thiagobandeira60/SQL_Project_Maranaca/blob/master/maracana.sql" class="button large">Check the Code</a></li>
+								<li><a href="https://github.com/thiagobandeira60/SQL_Project_Maranaca/blob/master/Metadata.pdf" class="button large">Metadata File</a></li>
+							</ul>
+					</div>
+
+				<!-- Footer -->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

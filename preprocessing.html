@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Data-Pre-Processing</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">My Portfolio</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/thiago-freitas60" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/thiagobandeira60" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Data Pre-Processing Project<br /></h1>
+									<p>In this project we have real state listing data from Brazil. The dataset contains almost a million rows and the goal is to do Pre-Processing only (Data Cleaning). The data can be found on the following link:<br />
+									<br />
+									<a href="https://www.kaggle.com/devvret/brazil-real-estate-listings">https://www.kaggle.com/devvret/brazil-real-estate-listings</a>
+								</header>
+								<div class="image main"><img src="images/preprocessing/data2.jpg" alt="" /></div>
+								<p>The goal for this project is to do pre-processing only, to have the file ready for processing later. Some of the issues that will be addressed in this project are:</p>
+								<ul type="disc">
+									<li>Dropping unnecessary columns</li>
+									<li>Changing columns data types</li>
+									<li>eature engineering, creating new columns</li>
+									<li>Standardization</li>
+									<li>Dealing with Outliers</li>
+									<li>Dealing with missing data</li>
+									<li>imputation techniques</li>
+								</ul>
+								<p>There are actually 2 datasets: brazil_properties_rent.csv and brazil_properties_sell.csv. We will performe some initial analysis to determione if they both have the same columns so we can concatenate them.</p>
+								<center><img src="images/preprocessing/br1.JPG" style="width: 40%; height: 40%" alt="" /></center>
+								<center><img src="images/preprocessing/br2.JPG" style="width: 40%; height: 40%" alt="" /></center>
+								<p>The 2 datasets ar similar, except for the location column in the rent data. When we merge the 2 datasets the location column, that already has over 52% of missing values in the smaller dataset, will have over 90% of missing data. Therefore, we are dropping that column and concatenating both datasets.</p>
+								<center><img src="images/preprocessing/brfull.JPG" style="width: 40%; height: 40%" alt="" /></center>
+								<p>After looking at each columns individually, in order to understand what needs to be done, we came to the following conclusion:</p>
+								<ol start="1">
+									<li>The first thing is to drop the columns that will not help the analysis since they either contain too many missing values or irrelevant information. The columns are: geonames_id, lat_lon, floor, expenses, properati_url, title, and image_thumbnail.</li>
+									<li>The column created_on needs to be changed to date type. It will be good to also extract the year, month, and name of the month and create 3 more columns with that information for future analysis.</li>
+									<li>Currency needs to be standardized. We should probably create Currancy in R$ and in USD dollars.</li>
+									<li>The column place_name contains the city names for each observation. The column place_with_parent_names contains more information about the location. It would be interesting to have the states as well. We will extract the state information and put it in a new column.</li>
+									<li>Not sure about what the price_aprox_local_currency column means, but it looks like it's an aproximation to the actual price in the local currency. The price_aprox_usd is probably the same price, but in dollars. The dataset doesn't contains a code-book.</li>
+									<li>Some columns need to be further investigated for outliers: price, price_aprox_local_currency, price_aprox_usd,  surface_total_in_m2, surface_covered_in_m2, price_usd_per_m2, price_per_m2, rooms.</li>
+									<li>The description column needs to be further investigated.</li>
+									<li>We need to deal with missing data and imputation.</li>								
+								</ol>
+								<p style="font-weight: bold;">1. Dropping the columns</p>
+								<center><img src="images/preprocessing/1.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p style="font-weight: bold;">2. Changing the column 'created_on' to the datetime format and creating the additional columns</p>
+								<center><img src="images/preprocessing/2.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<center><img src="images/preprocessing/3.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<center><img src="images/preprocessing/4.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p style="font-weight: bold;">3. Dealing with Currency column</p>
+								<center><img src="images/preprocessing/5.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<center><img src="images/preprocessing/6.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p style="font-weight: bold;">4. Getting the State column</p>
+								<center><img src="images/preprocessing/7.JPG" style="width: 60%; height: 60%" alt="" /></center>
+								<p>As we can see, the second argument is the state. By using the split() function we can grab the state from the place_with_parent_names column.</p>
+								<center><img src="images/preprocessing/8.JPG" style="width: 60%; height: 60%" alt="" /></center>
+								<p>Now we will use the unique() function to make sure everything is fine</p>
+								<center><img src="images/preprocessing/9.JPG" style="width: 60%; height: 60%" alt="" /></center>
+								<p>There is a name that doesn't make sense: Miami. Therefore, we will remove it.</p>
+								<center><img src="images/preprocessing/10.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p style="font-weight: bold;">5. Investigating the 'aprox' columns</p>
+								<center><img src="images/preprocessing/11.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<center><img src="images/preprocessing/12.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>The dollar price is around 3.20 during that period. It seems our suspects were almost right. The column price_aprox_local_currency is the actual price in local currency, the column price_aprox_usd is the same value in dollars, and the column price is an aproximation. Since that's the case, we can leave the columns there. They can be used later for analysis.</p>
+								<p style="font-weight: bold;">6. Investigating for Outliers</p>
+								<p>A simple way to investigate outliers is by using a scatterplot. Here we will investigate the outliers in price by state:</p>
+								<center><img src="images/preprocessing/13.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>Let's check the number of goods that cost over 60 million</p>
+								<center><img src="images/preprocessing/14.JPG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>There are just about 57 observations where the house's prices are more than 60 million. By looking at the description of a random sample of them, it's easy to notice that most of the observations don't make sense. Therefore, let's drop those rows</p>
+								<p>Now let's check the total and covered area columns. Let's see if we have observations where the covered surface are is bigger than the total surface area, which doesn't make sense. If we find any, we will drop them.</p>
+								<center><img src="images/preprocessing/15.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>We have 23,203 rows where the covered area is greater than the total area, which doen't make any sense. Just by investigating some of them, we can see that there are some erroneous values, such as row 968,861 where the covered area is 160 m2 and the total area is 0. We will, then, drop those rows.</p>
+								<p>Let's see if the price_per_m2 column makes sense by multiplying it with the surface covered and comparing the result with the price column.</p>
+								<center><img src="images/preprocessing/16.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<center><img src="images/preprocessing/17.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>Since the relationship is linear, we can assume that the columns surface_covered_in_m2, price_per_m2, and price_usd_per_m2 do not contain mistakes. Now we can drop the price_calc column.</p>
+								<p>By analysing the total_rooms column, we can see that there are just a few thousand rows that contain more than 10 rooms, and just a few hundred containing more than 20 rooms. However, by inspecting some of the observations, it's possible to see that these are outliers but make sense. Therefore, they won't be dropped.</p>
+								<p style="font-weight: bold;">7. Description Column</p>
+								<center><img src="images/preprocessing/18.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>The description column doesn't seem to be useful whatsoever. Therefore, we will drop it.</p>
+								<p style="font-weight: bold;">8. Dealing with Missing Data</p>
+								<p>This is the last step of the cleaning process where we'll deal with missing data. There are many approaches regarding missing data, and we will investigate further to see which ones suit our dataset and columns better.</p>
+								<p>We will first reorder our columns and then drop the place_with_parent_names column, as we don't need it anymore since we have the state column.</p>
+								<center><img src="images/preprocessing/19.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>To have a general idea of the missing data, we can use a missingno matrix</p>
+								<center><img src="images/preprocessing/20.JPG" style="width: 100%; height: 100%" alt="" /></center>
+								<p>We started by making a duplicate of our dataset and then some basic imputations using mean, median, mode, and a constant number (0). For that, we made a subset containing only numerical data to be able to perform the imputations. After the procedure, we can see which one performed the best and then concatenate the datasets.</p>
+								<p>Now let's visualize the result distribution pf those imputations</p>
+								<center><img src="images/preprocessing/21.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>We also performed a Mice imputation. Of all imputations method, the ones that have the closest shape to the original data are the mean imputation and the Mice imputation, as we can see below:</p>
+								<center><img src="images/preprocessing/22.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<center><img src="images/preprocessing/23.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>If we choose the Mice imputation, however, we would have negative values for the surface areas (total and covered), which would likely change the distribution as we get rid of them. Therefore, the mean distribution will be the chosen one.</p>
+								<p>The last step is to make sure the covered surface is not bigger than the total furface area (after the imputation) and round up the total_rooms column (we can't have 2.8 rooms!). The final result is a clean dataset, with no missing data:</p>
+								<center><img src="images/preprocessing/24.JPG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>Note: The python code is also provided below. It is optimized to be read using Atom's hydrogen package, where you can run each cell of codes separately and inline (similarly to ipython notebooks).</p>
+							</section>
+							<ul class="actions special">
+								<li><a href="https://github.com/thiagobandeira60/Brazil_Listing/blob/master/BR_Properties.ipynb" class="button large">Check the Code</a></li>
+								<li><a href="https://github.com/thiagobandeira60/Brazil_Listing/blob/master/BR_Properties.py" class="button large">Python Code</a></li>
+							</ul>
+					</div>
+
+				<!-- Footer -->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>California-Housing-Prices</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">My Portfolio</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/thiago-freitas60" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/thiagobandeira60" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>California Housing Prices<br /></h1>
+									<p>This is a Machine learning project to predict house prices based on the housing.csv dataset provided by Kaggle. The data can be found on the following link:<br />
+									<br />
+									<a href="https://www.kaggle.com/camnugent/california-housing-prices">https://www.kaggle.com/camnugent/california-housing-prices</a>
+								</header>
+								<div class="image main"><img src="images/california/california.jpg" alt="" /></div>
+								<p>In this project we are predicting the houses prices, depicted by the median_house_value column. The median_house_value column is a continuous variable, so we are talking about a regression problem. We are going to follow the following steps:</p>
+								<p style="font-size:17px">1. Initial EDA to have a glimpse of the data distribution and the data itself</p>
+								<p style="font-size:17px">2. We will deal with the missing data</p>
+								<p style="font-size:17px">3. Model test and evaluation</p>
+								<p style="font-size:17px">4. Model Selection and improvement</p>
+								<p style="font-size:17px">5. Conclusion</p>
+								<p>In the first step we need to do EDA (Exploratory Data Analysis) to understand what we need to do in order for us to properly work with the data. For that we used the head() function, the info() function, and some other functions like the isnull().sum() to visualize missing data and so on. To do some graphical EDA we used the pairplot() function, and the result can be displayed in the following picture:</p>
+								<div class="image main"><img src="images/california/pairplot.PNG" alt="" /></div>
+								<p>After that, we can use a correlation matrix to have an idea of the relationship between variables:</p>
+								<div class="image main"><img src="images/california/correlation.PNG" alt="" /></div>
+								<p>We can also see the correlation between variables by using a heatmap. The color varies from blue to red, where a dark blue means a strong negative correlation, whereas a dark red means a strong positive correlation between the respective variables</p>
+								<center><img src="images/california/heatmap.PNG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>The second step is to deal with the missing data. During EDA, we found that there is only one column that contains missing data, which is the total_bedrooms column. We will perform imputation using the median value found in that column to fill out the missing values there. The following code displays the code used and shows that after the imputation thare aren't any missing values anymore:</p>
+								<center><img src="images/california/missingdata.PNG" style="width: 40%; height: 40%" alt="" /></center>
+								<p>The variable ocean_proximity is categorical, so in that case use encode it to transfrom each category into a different number, since we can't use categorical variables for machine learning purposes as they are.</p>
+								<p>That being done, we go to the third step, where we try different models and evaluate them to see how well they perform. Since this is a prediction problem, we need to use regression. The three types of regression we are going to test in this project are Linear Regression, Decision Tree Regression, and Random Forest Regression.</p>
+								<p style="font-weight: bold;">Linear Regression</p>
+								<p>The first thing to do is to split the dataset into two datasets, one containing the independent variable only (the variable we want to predict), and the other containing the dependent variables (the variables used for prediction). After that, we split the datasets into train and test, as well as the train and test labels. We do that in order to use the train dataset for creating the model and the test dataset for testing the model on unseen data. That way we will have a more realistic idea of how our model will perform on unseen datasets.</p>
+								<center><img src="images/california/linear1.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<p>Then, we create a regressor, in this case a Linear regressor. After that, we fit the regressor to the training data and predict on the test dataset. Finally, we calculate the r-squared, our measure of accuracy (the higher, the better), and the root mean squared error, which is the difference between the predicted and observed values (the lower, the better). </p>
+								<center><img src="images/california/linear2.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<p>As we can see, we had an r-squared of 0.6137, which means that our model can explain or predict with accuracy 61.37% of the data. The following picture shows the difference between the actual and predicted values:</p>
+								<center><img src="images/california/linear3.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<p style="font-weight: bold;">Decision Tree Regression</p>
+								<p>For the decision tree regression we can use the same methodology, just making a few changes like the regressor type, and so on. The results we get for the r-squared and root mean squared error are:</p>
+								<center><img src="images/california/decision1.PNG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>The model performs better than the Linear Regression one since we have a highr r-squared and lower root mean squared error. The graph below shows the distribution:</p>
+								<center><img src="images/california/decision2.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<p style="font-weight: bold;">Random Forest Regression</p>
+								<p>Using the random forest regressor, we found the following values for the r-squared and root mean squared error:</p>
+								<center><img src="images/california/forest1.PNG" style="width: 41%; height: 41%" alt="" /></center>
+								<p>The difference graph is displayed below:</p>
+								<center><img src="images/california/forest2.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<p>Among the three different models we tested, the random forest model is the one that performs best. Therefore, we choose it as our preferred model. However, we can still try to change some parameters to see if we can improve our model even more.</p>
+								<p>Some of the attempts involved changing the dependent variables by using different combinations, standardizing different columns, and normalizing columns. The best result was achieved when we used the standard model and we normalized the total_rooms variable. By doing that we got the following numbers and graph:</p>
+								<center><img src="images/california/forestimproved1.PNG" style="width: 41%; height: 41%" alt="" /></center>
+								<center><img src="images/california/forestimproved2.PNG" style="width: 80%; height: 80%" alt="" /></center>
+								<p>What we conclude is that the best model is the Random Forest Regression. The model improves a little more when we normalize the total_rooms column, which has the highest variance amongst all columns. The model has:</p>
+								<p>R-squared: 0.8098</p>
+								<p>Root mean squared error: 49919.067</p>
+								<p>Which means that our model can predict about 81% of the data we have.</p>
+								<p>Note: The python code is also provided below. It is optimized to be read using Atom's hydrogen package, where you can run each cell of codes separately and inline (similarly to ipython notebooks).</p>
+							</section>
+							<ul class="actions special">
+								<li><a href="https://github.com/thiagobandeira60/California_housing/blob/master/California_housing_prices.ipynb" class="button large">Check the Code</a></li>
+								<li><a href="https://github.com/thiagobandeira60/California_housing/blob/master/California_housing.py" class="button large">Python Code</a></li>
+							</ul>
+					</div>
+
+				<!-- Footer -->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

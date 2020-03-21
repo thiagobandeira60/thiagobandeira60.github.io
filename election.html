@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Election-Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">My Portfolio</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/thiago-freitas60" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/thiagobandeira60" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Election Analysis<br /></h1>
+									<p>This is an analysis project based on data from the 2012 election. We'll analyze 2 datasets, one with the results of political polls, and the other one with donations. The datasets can be downloaded on the following links:<br />
+									<a href="http://elections.huffingtonpost.com/pollster/2012-general-election-romney-vs-obama.csv">http://elections.huffingtonpost.com/pollster/2012-general-election-romney-vs-obama.csv</a>	
+									<a href="https://www.dropbox.com/s/l29oppon2veaq4n/Election_Donor_Data.csv?dl=0">https://www.dropbox.com/s/l29oppon2veaq4n/Election_Donor_Data.csv?dl=0</a>
+									</header>
+								<center><img src="images/election/election2.jpg" style="width: 60%; height: 60%" alt="" /></center>
+								<p>For the first dataset we'll try to answer some questions like:</p>
+								<ul type="disc">
+									<li>Who was being polled and what was their party affiliation?</li>
+									<li>Did the poll results favor Romney or Obama?</li>
+									<li>How do undecided voters affect the poll?</li>
+									<li>Can we account for the undecided voters?</li>
+									<li>How did voter sentiment change over time?</li>
+									<li>Can we see an effect in the polls from the debates?</li>
+								</ul>
+								<p>The second dataset is about the results of donations. Some of the questions that we can answer are:</p>
+								<ul type="disc">
+									<li>How much was donated and what was the average donation?</li>
+									<li>How did the donations differ between candidates?</li>
+									<li>How did the donations differ between Democrats and Republicans?</li>
+									<li>What were the demographics of the donors?</li>
+									<li>Is there a pattern to donation amounts?</li>
+									<li>Can we see an effect in the polls from the debates?</li>
+								</ul>
+								<p>The very first thing is to pull out the data</p>
+								<center><img src="images/election/data.JPG" style="width: 60%; height: 60%" alt="" /></center>
+								<p>We identified that the columns 'Other', 'Question Text', and 'Question Iteration' will be irrelevant for analysis, so we will drop them.</p>
+								<p>Let's take a look at the affiliation using the hue population to filter</p>
+								<center><img src="images/election/1.JPG" style="width: 60%; height: 60%" alt="" /></center>
+								<p>It looks like we have a significant amount of likely voters and registered voters, what indicates that our data is accurate and a good reflection of the populations polled.</p>
+								<p>Now let's look at those numbers proportionally. We will get the averages for Obana and Romney, the standard deviation, and plot it using a bar plot. We can also check the number to compare them:</p>
+								<center><img src="images/election/2.JPG" style="width: 60%; height: 60%" alt="" /></center>
+								<center><img src="images/election/3.JPG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>It looks like Obama and Romney are really close, but what about the undecided? Let's do a quick time series analysis of voter sentiment by plotting Obama, Romney favor versus the pool end dates.</p>
+								<center><img src="images/election/4.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>The above plot is just to have a general idea of how sentiment goes over time. Now, what we're gonna do is to plot out the difference between Obama and Romney and see how that changes as time moves along.</p>
+								<center><img src="images/election/5.JPG" style="width: 60%; height: 60%" alt="" /></center>
+								<center><img src="images/election/6.JPG" style="width: 60%; height: 60%" alt="" /></center>
+								<center><img src="images/election/7.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>There are 2 particular points in October that are unusual. We know that the debates took place in October, so let's zoom in and see that specific month.</p>
+								<center><img src="images/election/8.JPG" style="width: 50%; height: 50%" alt="" /></center>
+								<center><img src="images/election/9.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>Now we have the October month only, and markers on every debate point. It seems, based on the plot, that after the first debate that happened on October 3rd, the sentiment for Obama increased. After the second debate the sentiment for Romney became more favorable. After the third debate everyone was pretty even.</p>
+								<p>Now Let's take a look at the Donors' dataset</p>
+								<center><img src="images/election/10.JPG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>Let's take a look at the average and standar deviation</p>
+								<center><img src="images/election/11.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>This is a huge standard deviation, so let's investigate that a little further</p>
+								<center><img src="images/election/12.JPG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>we have two issues here: negative refund amounts and very large donations. That's what is causing our big standard deviation. Let's get rid of the negative refund amounts so that our distribution can make sense.</p>
+								<p>These are the most common amounts. Now, let's do a histogram to visualize it, but we will limit it to 2,500 since that was the biggest donation in the top 10.</p>
+								<center><img src="images/election/13.JPG" style="width: 50%; height: 50%" alt="" /></center>
+								<center><img src="images/election/14.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>It seems people are inclined to donate rounded number values. We'll dive deeper and try to separate donations by party.</p>
+								<center><img src="images/election/15.JPG" style="width: 60%; height: 60%" alt="" /></center>
+								<center><img src="images/election/16.JPG" style="width: 50%; height: 50%" alt="" /></center>
+								<p>As we can see, Obama had the highest number of donations. Now let's take a look at those values in dollars</p>
+								<center><img src="images/election/17.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>Now it's better to read but kind of hard to compare. Let's put it into a graph</p>
+								<center><img src="images/election/18.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>Since Obama is the only Democrat, let's compare it with all the other Republicans</p>
+								<center><img src="images/election/19.JPG" style="width: 70%; height: 70%" alt="" /></center>
+								<p>Looks like Obama couldn't compete against all the republicans, but he certainly has the advantage of their funding being splintered across multiple candidates. Let's look at donations and who they came from (as far as occupation is concerned)</p>
+								<center><img src="images/election/20.JPG" style="width: 80%; height: 80%" alt="" /></center>
+								<p>We have a few issues on this graph. We have 'Information requested per best efforts' and 'Information requested', which are not actually an occupation, and we have 2 CEO occupations, which are actually the same thing.</p>
+								<center><img src="images/election/21.JPG" style="width: 80%; height: 80%" alt="" /></center>
+								<p>Looks like CEOs are a little more conservative leaning, this may be due to the tax philosphies of each party during the election.</p>
+								<p>This is just a simple data analysis project, and there a lot more to discover in this dataset. We were able to understand the voters and donors a little more by using some visualization techniques that turned numbers into usable information.</p>
+								<p>Note: The python code is also provided below. It is optimized to be read using Atom's hydrogen package, where you can run each cell of codes separately and inline (similarly to ipython notebooks).</p>
+							</section>
+							<ul class="actions special">
+								<li><a href="https://github.com/thiagobandeira60/Election_Analysis/blob/master/Election_Analysis.ipynb" class="button large">Check the Code</a></li>
+								<li><a href="https://github.com/thiagobandeira60/Election_Analysis/blob/master/Election_Analysis.py" class="button large">Python Code</a></li>
+							</ul>
+					</div>
+
+				<!-- Footer -->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
